@@ -48,10 +48,6 @@ require('lazy').setup({
     }
   },
   {
-    'willothy/wezterm.nvim',
-    config = true
-  },
-  {
   'olivercederborg/poimandres.nvim',
   lazy = false,
   priority = 1000,
@@ -60,9 +56,6 @@ require('lazy').setup({
       bold_vert_split = true,
       dim_nc_background = true,
       disable_italics = true
-      -- leave this setup function empty for default config
-      -- or refer to the configuration section
-      -- for configuration options
     }
   end,
 
@@ -162,10 +155,7 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    main = "ibl",
   },
   'nvim-lua/popup.nvim',
   'notjedi/nvim-rooter.lua',
@@ -216,22 +206,4 @@ require('lazy').setup({
       require("todo-comments").setup {}
     end
   },
-  {
-    'epwalsh/obsidian.nvim',
-    tag = "*",
-    requires={
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("obsidian").setup({
-        workspaces = {
-          {
-            name = "personal",
-            path="D:/All Notes",
-          },
-        },
-      })
-    end,
-  }
-
 }, {})
