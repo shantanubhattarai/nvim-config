@@ -48,20 +48,18 @@ require('lazy').setup({
     }
   },
   {
-  'olivercederborg/poimandres.nvim',
+  'projekt0n/github-nvim-theme',
   lazy = false,
   priority = 1000,
   config = function()
-    require('poimandres').setup {
-      bold_vert_split = true,
-      dim_nc_background = true,
-      disable_italics = true
+    require('github-theme').setup {
+        terminal_colors = true,
+        dim_inactive = true,
     }
   end,
 
-  -- optionally set the colorscheme within lazy config
   init = function()
-    vim.cmd("colorscheme poimandres")
+    vim.cmd("colorscheme github_dark")
   end
 },
   -- Git in github
