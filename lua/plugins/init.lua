@@ -14,10 +14,46 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  {'ggandor/lightspeed.nvim'},
+  -- colorscheme, currently github_dark
+  {
+    'projekt0n/github-nvim-theme',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('github-theme').setup {
+        terminal_colors = true,
+        dim_inactive = true,
+      }
+    end,
+
+    init = function()
+      vim.cmd("colorscheme github_dark_dimmed")
+    end
+  },
+  {
+    "echasnovski/mini.pairs",
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      {
+        "<leader>up",
+        function()
+          local Util = require("lazy.core.util")
+          vim.g.minipairs_disable = not vim.g.minipairs_disable
+          if vim.g.minipairs_disable then
+            Util.warn("Disabled auto pairs", { title = "Option" })
+          else
+            Util.info("Enabled auto pairs", { title = "Option" })
+          end
+        end,
+        desc = "Toggle auto pairs",
+      },
+    },
+  },
+  { 'ggandor/lightspeed.nvim' },
   {
     'gennaro-tedesco/nvim-jqx',
-    ft={'json', 'yaml'},
+    ft = { 'json', 'yaml' },
   },
   {
     'kylechui/nvim-surround',
@@ -47,21 +83,6 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
     }
   },
-  {
-  'projekt0n/github-nvim-theme',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require('github-theme').setup {
-        terminal_colors = true,
-        dim_inactive = true,
-    }
-  end,
-
-  init = function()
-    vim.cmd("colorscheme github_dark")
-  end
-},
   -- Git in github
   'tpope/vim-fugitive',
   -- hub in github
@@ -94,21 +115,13 @@ require('lazy').setup({
       'hrsh7th/cmp-buffer' },
   },
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',          opts = {} },
+  { 'folke/which-key.nvim',   opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       numhl = true,
       current_line_blame = true,
-    -- See `:help gitsigns.txt`
-    --  signs = {
-    --    add = { text = '+' },
-    --    change = { text = '~' },
-    --    delete = { text = '_' },
-    --    topdelete = { text = '‾' },
-    --    changedelete = { text = '~' },
-    --  },
     },
   },
   {
@@ -120,8 +133,32 @@ require('lazy').setup({
   {
     'kyazdani42/nvim-tree.lua',
     config = function()
-      require 'nvim-tree'.setup ({
+      require 'nvim-tree'.setup({
         view = {
+          number = true,
+          signcolumn = "yes",
+          float = {
+            enable = true,
+            quit_on_focus_loss = true,
+            open_win_config = function()
+              local screen_w = vim.opt.columns:get()
+              local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+              local window_w = screen_w * 0.8
+              local window_h = screen_h * 0.5
+              local window_w_int = math.floor(window_w)
+              local window_h_int = math.floor(window_h)
+              local center_x = (screen_w - window_w) / 2
+              local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
+              return {
+                relative = "editor",
+                border = "rounded",
+                width = window_w_int,
+                height = window_h_int,
+                row = center_y,
+                col = center_x,
+              }
+            end
+          }
         }
       })
     end
@@ -130,19 +167,11 @@ require('lazy').setup({
     'nvim-tree/nvim-web-devicons',
   },
   {
-    -- theme
-    'catppuccin/nvim',
-    priority = 1000,
-    config = function()
-      -- vim.cmd.colorscheme 'catppuccin-mocha'
-    end,
-  },
-  {
     'nvim-lualine/lualine.nvim',
     opts = {
       options = {
         icons_enabled = true,
-        theme = "poimandres",
+        theme = "github_dark",
         component_separators = "|",
         section_separators = '',
       }

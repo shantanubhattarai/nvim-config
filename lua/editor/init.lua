@@ -15,7 +15,7 @@ vim.opt.encoding = 'utf-8'
 
 vim.o.clipboard = 'unnamedplus'
 
-vim.o.breakident = true
+vim.o.breakindent = true
 
 vim.o.undofile = true
 
@@ -107,6 +107,9 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
+  modules = {},
+  ignore_install = {},
+  sync_install = true,
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vim' },
 

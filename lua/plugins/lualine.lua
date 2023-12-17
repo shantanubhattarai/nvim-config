@@ -49,8 +49,8 @@ end
 
 require('lualine').setup {
     options = {
-        theme = "poimandres",
-        component_separators = '',
+        theme = "github_dark",
+        component_separators = '|',
         section_separators = { left = '', right = '' },
     },
     sections = process_sections {
@@ -68,7 +68,7 @@ require('lualine').setup {
                 source = { 'nvim' },
                 sections = { 'warn' },
             },
-            { 'filename', file_status = false, path = 1 },
+            { 'filename', file_status = true, path = 1 },
             { modified },
             {
                 '%w',
