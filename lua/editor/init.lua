@@ -30,7 +30,7 @@ vim.o.timeoutlen = 300
 
 vim.o.completeopt = 'menuone,noselect'
 vim.g['completion_matching_strategy_list'] = { 'exact', 'substring', 'fuzzy' }
-
+vim.g.alabaster_dim_comments = true
 vim.cmd('set shortmess+=c')
 vim.opt.hidden = true
 vim.opt.lazyredraw = true
@@ -50,7 +50,7 @@ local lspkind = require("lspkind")
 lspkind.init({})
 
 vim.cmd("autocmd BufReadPost,FileReadPost * normal zR")
-
+vim.g.neobones_italic_comments = false
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -172,3 +172,5 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+
+

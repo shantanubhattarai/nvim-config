@@ -15,19 +15,29 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- colorscheme, currently github_dark
+  -- {
+  --   'projekt0n/github-nvim-theme',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require('github-theme').setup {
+  --       terminal_colors = true,
+  --       dim_inactive = true,
+  --       options = {
+  --         transparent = true,
+  --       }
+  --     }
+  --   end,
+  --   init = function()
+  --     vim.cmd("colorscheme github_dark")
+  --   end
+  -- },
   {
-    'projekt0n/github-nvim-theme',
+    'VonHeikemen/rubber-themes.vim',
     lazy = false,
     priority = 1000,
-    config = function()
-      require('github-theme').setup {
-        terminal_colors = true,
-        dim_inactive = true,
-      }
-    end,
-
     init = function()
-      vim.cmd("colorscheme github_dark_dimmed")
+      vim.cmd('colorscheme rubber')
     end
   },
   {
@@ -171,7 +181,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = "github_dark",
+        theme = "auto",
         component_separators = "|",
         section_separators = '',
       }
@@ -234,3 +244,5 @@ require('lazy').setup({
     end
   },
 }, {})
+
+

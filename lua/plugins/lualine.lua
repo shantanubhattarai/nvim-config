@@ -49,7 +49,7 @@ end
 
 require('lualine').setup {
     options = {
-        theme = "github_dark",
+        theme = "auto",
         component_separators = '|',
         section_separators = { left = '', right = '' },
     },
