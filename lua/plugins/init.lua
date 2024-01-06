@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   {
     'shantanubhattarai/custom-vesper.vim',
+    version = "*",
     lazy = false,
     priority = 1000,
     init = function()
