@@ -15,11 +15,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   {
-    'VonHeikemen/rubber-themes.vim',
+    'shantanubhattarai/custom-vesper.vim',
     lazy = false,
     priority = 1000,
     init = function()
-      vim.cmd('colorscheme rubber')
+      vim.cmd('colorscheme custom-vesper')
     end
   },
   {
